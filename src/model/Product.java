@@ -23,46 +23,32 @@ public abstract class Product {
 	}
 	
 	// vier parameter constructor
-	Product(String naam, int prijsPerEenheid, String imageUrl, int eenheid) {
-		/*this(naam, prijsPerEenheid, imageUrl);
-		setEenheid(eenheid);*/
-	};
+	Product(String naam, int prijsPerEenheid, String imageUrl, int eenheid) {};
 	
 	// drie parameter constructor
-	Product(String naam, int prijsPerEenheid, String imageUrl){
-	/*	setNaam(naam);
-		setPrijsPerEenheid(prijsPerEenheid);
-		setImageURL(imageUrl);
-		setEenheid(STUK);*/
-	};
+	Product(String naam, int prijsPerEenheid, String imageUrl){	};
 	
 	// korte naam van het product
 	abstract String getNaam();
-	//abstract void setNaam(String naam);
-	
-	// de prijs van voor een bestelling van de gegeven hoeveelheid 
-	abstract int getPrijs(int hoeveelheid);
 	
 	// de eenheid waarin het product wordt verkocht
 	abstract int getEenheid();
-	//abstract void setEenheid(int eenheid);
 	
 	// de prijs per eenheid voor dit product
 	abstract int getPrijsPerEenheid();
-	//abstract void setPrijsPerEenheid(int prijsPerEenheid);
 	
 	// de URL voor een afbeelding om het product te tonen
 	abstract String getImageURL();
-	//abstract void setImageURL(String imageUrl);
 	
 	public String toString(){
-		return getNaam() + getEenheid() + getPrijs();
+		return getNaam() + getEenheid() + getPrijs(1); //TODO is dit geen hack?
 	}
 	
-	// Return getPrijsPerEenheid, geen idee wat deze meer geeft dan de abstract method
-	public double getPrijs(){
-		return getPrijsPerEenheid();
+	// de prijs van voor een bestelling van de gegeven hoeveelheid 
+	public int getPrijs(int hoeveelheid) {
+		return hoeveelheid * getPrijsPerEenheid();
 	}
+		
 }
 
 class DefaultProduct extends Product {
