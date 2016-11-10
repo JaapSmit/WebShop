@@ -41,7 +41,7 @@ public abstract class Product {
 	abstract String getImageURL();
 	
 	public String toString(){
-		return getNaam() + getEenheid() + getPrijs(1); //TODO is dit geen hack?
+		return getNaam() + getEenheid() + getPrijsPerEenheid(); //TODO is dit geen hack?
 	}
 	
 	// de prijs van voor een bestelling van de gegeven hoeveelheid 
@@ -51,6 +51,7 @@ public abstract class Product {
 		
 }
 
+// standaardproduct
 class DefaultProduct extends Product {
 	private String naam;
 	private int prijs;
@@ -71,13 +72,11 @@ class DefaultProduct extends Product {
 		this.eenheid = STUK;
 	}
 	
-	
-	
 	@Override
 	String getNaam() { return naam;	}
 
 	@Override
-	int getPrijs(int hoeveelheid) { return prijs; }
+	public int getPrijs(int hoeveelheid) { return prijs; }
 
 	@Override
 	int getEenheid() { return eenheid; }
@@ -87,4 +86,37 @@ class DefaultProduct extends Product {
 
 	@Override
 	String getImageURL() { return imageUrl;	}
+}
+
+class KwantumKorting extends Product {
+	private String naam;
+	private int prijs;
+	private int eenheid;
+	private int prijsPerEenheid;
+	private String imageUrl;
+
+	KwantumKorting(String naam, int prijsPerEenheid, String imageUrl, int eenheid) {
+		super(naam, prijsPerEenheid, imageUrl, eenheid);
+		this.naam = naam;
+		this.prijsPerEenheid = prijsPerEenheid;
+		this.imageUrl = imageUrl;
+		this.eenheid = eenheid;
+	}
+	
+	KwantumKorting(String naam, int prijsPerEenheid, String imageUrl) {
+		super(naam, prijsPerEenheid, imageUrl);
+		this.eenheid = STUK;
+	}
+	@Override
+	String getNaam() { return naam; }
+
+	@Override
+	int getEenheid() { return eenheid; }
+
+	@Override
+	int getPrijsPerEenheid() { return prijsPerEenheid;	}
+
+	@Override
+	String getImageURL() { return imageUrl; }
+	
 }
