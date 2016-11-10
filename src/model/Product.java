@@ -41,13 +41,15 @@ public abstract class Product {
 	abstract String getImageURL();
 	
 	public String toString(){
-		return getNaam() + getEenheid() + getPrijsPerEenheid(); //TODO is dit geen hack?
+		return getNaam() + getEenheid() + getPrijsPerEenheid();
 	}
 	
 	// de prijs van voor een bestelling van de gegeven hoeveelheid 
 	public int getPrijs(int hoeveelheid) {
 		return hoeveelheid * getPrijsPerEenheid();
 	}
+	
+	abstract void addToWinkelwagen(); //TODO: Implement
 		
 }
 
@@ -76,9 +78,6 @@ class DefaultProduct extends Product {
 	String getNaam() { return naam;	}
 
 	@Override
-	public int getPrijs(int hoeveelheid) { return prijs; }
-
-	@Override
 	int getEenheid() { return eenheid; }
 
 	@Override
@@ -86,37 +85,50 @@ class DefaultProduct extends Product {
 
 	@Override
 	String getImageURL() { return imageUrl;	}
+	
+	@Override
+	void addToWinkelwagen() {
+		// maybe a further implement
+	}
 }
 
-class KwantumKorting extends Product {
-	private String naam;
-	private int prijs;
-	private int eenheid;
-	private int prijsPerEenheid;
-	private String imageUrl;
+class KwantumKorting extends DefaultProduct {
 
 	KwantumKorting(String naam, int prijsPerEenheid, String imageUrl, int eenheid) {
 		super(naam, prijsPerEenheid, imageUrl, eenheid);
-		this.naam = naam;
-		this.prijsPerEenheid = prijsPerEenheid;
-		this.imageUrl = imageUrl;
-		this.eenheid = eenheid;
 	}
 	
 	KwantumKorting(String naam, int prijsPerEenheid, String imageUrl) {
 		super(naam, prijsPerEenheid, imageUrl);
-		this.eenheid = STUK;
 	}
-	@Override
-	String getNaam() { return naam; }
 
 	@Override
-	int getEenheid() { return eenheid; }
-
-	@Override
-	int getPrijsPerEenheid() { return prijsPerEenheid;	}
-
-	@Override
-	String getImageURL() { return imageUrl; }
+	public int getPrijs(int hoeveelheid) {
+		return super.getPrijs(hoeveelheid) - discount(hoeveelheid);
+	}
 	
+	private int discount(int hoeveelheid) {
+		return (int)Math.pow((double)(hoeveelheid * getPrijsPerEenheid()), 2)/300;
+	}
+	
+}
+
+class Beperkt extends DefaultProduct {
+	private boolean alInWinkelwagen = false;
+	Beperkt(String naam, int prijsPerEenheid, String imageUrl, int eenheid) {
+		super(naam, prijsPerEenheid, imageUrl, eenheid);
+	}
+	
+	Beperkt(String naam, int prijsPerEenheid, String imageUrl) {
+		super(naam, prijsPerEenheid, imageUrl);
+	}
+	
+	@Override
+	void addToWinkelwagen() {
+		if(alInWinkelwagen == false) {
+			super.addToWinkelwagen();
+			alInWinkelwagen = true;
+			// Disable the add knop
+		}		
+	}
 }
