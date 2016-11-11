@@ -21,7 +21,7 @@ public class Index extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Hier voor kan dus de logica van de site komen
-		voorraad.add(new DefaultProduct())
+		//voorraad.add(new DefaultProduct())
 		// Hier tussen komen alle request.setAttributes
 		
 		// Deze site roept de jsp aan die de html genereert
