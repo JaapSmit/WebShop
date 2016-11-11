@@ -29,7 +29,7 @@ public abstract class Product {
 	Product(String naam, int prijsPerEenheid, String imageUrl){	};
 	
 	// korte naam van het product
-	abstract String getNaam();
+	public abstract String getNaam();
 	
 	// de eenheid waarin het product wordt verkocht
 	abstract int getEenheid();

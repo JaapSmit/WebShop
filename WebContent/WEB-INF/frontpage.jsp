@@ -1,3 +1,6 @@
+<%@ page import= "java.util.*" %>
+<%@ page import= "model.*" %>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,7 +14,7 @@
 <div id="mainblock">
 	<div id="title">
 		<h1>TomosBeunShop</h1>
-		<h3>Goedkoop en lekker snel</h3>
+		<h3>Goedkoop en lekker snel</h3> 
 	</div>
 	<div id="containerMiddle">
 		<div id="leftBlock">
@@ -30,10 +33,13 @@
 				<h3>Producten:</h3>
 				<ul>
 					<!--  future links  --> 
-					<li><a href="motorblok"> Motorblok </a></li>
-					<li><a href="frame"> Frame </a></li>
-					<li><a href="olie"> Olie </a></li>
-					<li><a href="spaakvelgen"> Spaakvelgen </a></li>
+					<% ArrayList<Product> voorraad = (ArrayList)request.getAttribute("voorraad");
+					for(Product p : voorraad) {
+						System.out.println(p.getNaam());
+						%><li><a href="<%= p.getNaam() %>"> <%= p.getNaam() %></a></li><%
+					}
+					
+					%>
 				</ul>
 			</nav>
 		</div>

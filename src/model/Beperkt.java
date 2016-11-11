@@ -2,11 +2,12 @@ package model;
 
 public class Beperkt extends DefaultProduct {
 	private boolean alInWinkelwagen = false;
-	Beperkt(String naam, int prijsPerEenheid, String imageUrl, int eenheid) {
+	
+	public Beperkt(String naam, int prijsPerEenheid, String imageUrl, int eenheid) {
 		super(naam, prijsPerEenheid, imageUrl, eenheid);
 	}
 	
-	Beperkt(String naam, int prijsPerEenheid, String imageUrl) {
+	public Beperkt(String naam, int prijsPerEenheid, String imageUrl) {
 		super(naam, prijsPerEenheid, imageUrl);
 	}
 	

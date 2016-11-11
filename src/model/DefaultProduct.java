@@ -8,7 +8,7 @@ public class DefaultProduct extends Product {
 	private int prijsPerEenheid;
 	private String imageUrl;
 	
-	DefaultProduct(String naam, int prijsPerEenheid, String imageUrl, int eenheid) {
+	public DefaultProduct(String naam, int prijsPerEenheid, String imageUrl, int eenheid) {
 		super(naam, prijsPerEenheid, imageUrl, eenheid);
 		this.naam = naam;
 		this.prijsPerEenheid = prijsPerEenheid;
@@ -16,13 +16,16 @@ public class DefaultProduct extends Product {
 		this.eenheid = eenheid;
 	}
 	
-	DefaultProduct(String naam, int prijsPerEenheid, String imageUrl) {
+	public DefaultProduct(String naam, int prijsPerEenheid, String imageUrl) {
 		super(naam, prijsPerEenheid, imageUrl);
+		this.naam = naam;
+		this.prijsPerEenheid = prijsPerEenheid;
+		this.imageUrl = imageUrl;
 		this.eenheid = STUK;
 	}
 	
 	@Override
-	String getNaam() { return naam;	}
+	public String getNaam() { return naam;	}
 
 	@Override
 	int getEenheid() { return eenheid; }
