@@ -23,3 +23,11 @@
 	border-style: groove;
 	flex: 1;
 }
+
+h1 {
+	color: DarkRed;
+}
+
+#title {
+	text-align: center;
+}

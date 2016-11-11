@@ -11,7 +11,7 @@
 <div id="mainblock">
 	<div id="title">
 		<h1>TomosBeunShop</h1>
-		<h2>Goedkoop en lekker snel</h2>
+		<h3>Goedkoop en lekker snel</h3>
 	</div>
 	<div id="containerMiddle">
 		<div id="leftBlock">
@@ -27,15 +27,21 @@
 		</div>
 		<div id="rightBlock">
 			<nav>
-				<!--  future links  --> 
-				<a href="motorblok"> Motorblok </a>
-				<a href="frame"> Frame </a>
-				<a href="olie"> Olie </a>
-				<a href="spaakvelgen"> Spaakvelgen </a>
+				<h3>Producten:</h3>
+				<ul>
+					<!--  future links  --> 
+					<li><a href="motorblok"> Motorblok </a></li>
+					<li><a href="frame"> Frame </a></li>
+					<li><a href="olie"> Olie </a></li>
+					<li><a href="spaakvelgen"> Spaakvelgen </a></li>
+				</ul>
 			</nav>
 		</div>
 	</div>
 	<div id="footer">
+		<footer>
+			Elke dag is een beun dag
+		</footer>
 	</div>
 </div>
 
