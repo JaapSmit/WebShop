@@ -35,8 +35,7 @@
 					<!--  future links  --> 
 					<% ArrayList<Product> voorraad = (ArrayList)request.getAttribute("voorraad");
 					for(Product p : voorraad) {
-						System.out.println(p.getNaam());
-						%><li><a href="<%= p.getNaam() %>"> <%= p.getNaam() %></a></li><%
+						%><li><a href="Product?id=<%=p.getNaam() %>"> <%= p.getNaam() %></a></li><%
 					}
 					
 					%>

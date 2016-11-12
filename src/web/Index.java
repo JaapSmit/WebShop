@@ -2,6 +2,7 @@ package web;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import model.*;
 
@@ -23,6 +24,14 @@ public class Index extends HttpServlet {
 		voorraad.add(new DefaultProduct("Achterbrug", 43, "achterbrug.png"));
 		voorraad.add(new Beperkt("Kentekenplaat", 52, "kentekenplaat.jpg"));
 		voorraad.add(new KwantumKorting("Olie", 52, "olie.png", 3));
+	}
+	
+	static HashMap<String, Product> voorraadMap;
+	static{
+		voorraadMap = new HashMap<String, Product>();
+		for(Product p : voorraad) {
+			voorraadMap.put(p.getNaam(), p);
+		}
 	}
 	
        
