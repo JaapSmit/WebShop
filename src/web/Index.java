@@ -21,7 +21,7 @@ public class Index extends HttpServlet {
 	private static ArrayList<Product> voorraad = new ArrayList<>();
 	static {
 		voorraad.add(new DefaultProduct("Cilinderkop", 52, "cilinderKop.jpg"));
-		voorraad.add(new DefaultProduct("Achterbrug", 43, "achterbrug.png"));
+		voorraad.add(new DefaultProduct("Achterbrug", 43, "achterbrug.jpg"));
 		voorraad.add(new Beperkt("Kentekenplaat", 52, "kentekenplaat.jpg"));
 		voorraad.add(new KwantumKorting("Olie", 52, "olie.png", 3));
 	}

@@ -35,10 +35,10 @@ public abstract class Product {
 	abstract int getEenheid();
 	
 	// de prijs per eenheid voor dit product
-	abstract int getPrijsPerEenheid();
+	public abstract int getPrijsPerEenheid();
 	
 	// de URL voor een afbeelding om het product te tonen
-	abstract String getImageURL();
+	public abstract String getImageURL();
 	
 	public String toString(){
 		return getNaam() + getEenheid() + getPrijsPerEenheid();

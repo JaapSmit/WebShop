@@ -31,10 +31,10 @@ public class DefaultProduct extends Product {
 	int getEenheid() { return eenheid; }
 
 	@Override
-	int getPrijsPerEenheid() { return prijsPerEenheid; }
+	public int getPrijsPerEenheid() { return prijsPerEenheid; }
 
 	@Override
-	String getImageURL() { return imageUrl;	}
+	public String getImageURL() { return imageUrl;	}
 	
 	@Override
 	void addToWinkelwagen() {
