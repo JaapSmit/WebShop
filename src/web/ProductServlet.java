@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.Product;
 
@@ -16,9 +17,10 @@ import model.Product;
 public class ProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static HashMap<String, Product> voorraadMap = Index.voorraadMap;
-	public static Winkelwagen winkelwagen = new Winkelwagen();
+	//public static Winkelwagen winkelwagen = new Winkelwagen();
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Url afhandeling
 		String url = request.getQueryString();
 		url = url.substring(url.indexOf("=")+1);
 		if(url.endsWith("Error")) {
@@ -34,13 +36,15 @@ public class ProductServlet extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		String product = (String)request.getParameter("product");
 		int hoeveelheid = Integer.parseInt(request.getParameter("hoeveelheid"));
 		
 		if(hoeveelheid <= 0) {
 			response.sendRedirect("Product?id="+product+"Error");
 		} else {
-			winkelwagen.bestel(voorraadMap.get(product), hoeveelheid);
+			//winkelwagen.bestel(voorraadMap.get(product), hoeveelheid);
+			((Winkelwagen)session.getAttribute("winkelwagen")).bestel(voorraadMap.get(product), hoeveelheid);
 			response.sendRedirect("index");
 		}	
 		

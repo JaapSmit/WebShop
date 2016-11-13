@@ -1,10 +1,11 @@
 <%@ page import= "java.util.*" %>
 <%@ page import= "model.*" %>
 <%@ page import= "bestel.*" %>
-<%@ page import= "static web.ProductServlet.winkelwagen" %>
+
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <link rel="stylesheet" href="stylesheet.css">
@@ -13,6 +14,7 @@
 <title>TomosBeunShop</title>
 </head>
 <body id="mainbody">
+<% Winkelwagen winkelwagen = (Winkelwagen)request.getAttribute("winkelwagen"); %>
 <div id="mainblock">
 	<div id="title">
 		<h1>TomosBeunShop</h1>

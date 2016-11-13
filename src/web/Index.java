@@ -11,6 +11,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import bestel.Winkelwagen;
 
 /**
  * Servlet implementation class Index
@@ -34,8 +37,21 @@ public class Index extends HttpServlet {
 		}
 	}
 	
-       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		HttpSession session = request.getSession(false);
+		if(session == null) {
+			Winkelwagen winkelwagen = new Winkelwagen();
+			session = request.getSession();
+			session.setAttribute("winkelwagen", winkelwagen);
+			request.setAttribute("winkelwagen", winkelwagen);
+			System.out.println("New session");
+			System.out.println(winkelwagen);
+		} else {
+			session = request.getSession();
+			request.setAttribute("winkelwagen", session.getAttribute("winkelwagen"));
+			System.out.println("Old session");
+		}
 		// Hier voor kan dus de logica van de site komen
 				
 		request.setAttribute("voorraad", voorraad);
