@@ -33,6 +33,10 @@
 						<td><%= p.getPrijs() %> </td>
 						</tr>
 				<% }%>
+				<tr>
+					<td>Totaal<td>
+					<td><%= winkelwagen.getTotaalPrijs() %></td>
+				</tr>
 				</table>
 			<% } %>
 		</div>
