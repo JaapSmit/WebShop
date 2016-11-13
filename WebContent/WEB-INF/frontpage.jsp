@@ -41,6 +41,9 @@
 				</tr>
 				</table>
 			<% } %>
+		<form action="Kassa"> 
+		<input type="submit" value="afronden">
+		</form>
 		</div>
 		<div id="rightBlock">
 			<nav>
