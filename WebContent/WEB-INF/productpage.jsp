@@ -15,6 +15,10 @@ Product p = voorraadMap.get(item);
 <title> <%=p.getNaam()%> </title>
 </head>
 <body>
+	<% String error = (String)request.getAttribute("error"); %>
+	<% if(error.equals("error")) { %>
+		FOUT in de bestelling, voer opnieuw de bestelling in.
+	<% } %>
 	<h1><%=p.getNaam()%></h1><br>
 	<img src="<%=p.getImageURL() %>"><br>
 	Prijs: <%=p.getPrijsPerEenheid() %> <br>

@@ -21,7 +21,12 @@ public class ProductServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = request.getQueryString();
 		url = url.substring(url.indexOf("=")+1);
-		
+		if(url.endsWith("Error")) {
+			request.setAttribute("error", "error");
+			url = url.substring(0, url.length()-5);
+		} else {
+			request.setAttribute("error", "none");
+		}
 		request.setAttribute("voorraadMap", voorraadMap);
 		request.setAttribute("item", url);
 		
@@ -31,10 +36,14 @@ public class ProductServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String product = (String)request.getParameter("product");
 		int hoeveelheid = Integer.parseInt(request.getParameter("hoeveelheid"));
-		winkelwagen.bestel(voorraadMap.get(product), hoeveelheid);
-		System.out.println(winkelwagen);
-		//response.sendRedirect("Product?id="+product);
-		response.sendRedirect("index");
+		
+		if(hoeveelheid <= 0) {
+			response.sendRedirect("Product?id="+product+"Error");
+		} else {
+			winkelwagen.bestel(voorraadMap.get(product), hoeveelheid);
+			response.sendRedirect("index");
+		}	
+		
 	}
 
 }
