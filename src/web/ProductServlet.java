@@ -16,7 +16,7 @@ import model.Product;
 public class ProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static HashMap<String, Product> voorraadMap = Index.voorraadMap;
-	static Winkelwagen winkelwagen = new Winkelwagen();
+	public static Winkelwagen winkelwagen = new Winkelwagen();
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = request.getQueryString();
@@ -33,7 +33,8 @@ public class ProductServlet extends HttpServlet {
 		int hoeveelheid = Integer.parseInt(request.getParameter("hoeveelheid"));
 		winkelwagen.bestel(voorraadMap.get(product), hoeveelheid);
 		System.out.println(winkelwagen);
-		response.sendRedirect("Product?id="+product);
+		//response.sendRedirect("Product?id="+product);
+		response.sendRedirect("index");
 	}
 
 }

@@ -22,8 +22,8 @@ public class Index extends HttpServlet {
 	static {
 		voorraad.add(new DefaultProduct("Cilinderkop", 52, "cilinderKop.jpg"));
 		voorraad.add(new DefaultProduct("Achterbrug", 43, "achterbrug.jpg"));
-		voorraad.add(new Beperkt("Kentekenplaat", 52, "kentekenplaat.jpg"));
-		voorraad.add(new KwantumKorting("Olie", 52, "olie.png", 3));
+		voorraad.add(new Beperkt("Kentekenplaat", 17, "kentekenplaat.jpg"));
+		voorraad.add(new KwantumKorting("Olie", 8, "olie.png", 3));
 	}
 	
 	static HashMap<String, Product> voorraadMap;

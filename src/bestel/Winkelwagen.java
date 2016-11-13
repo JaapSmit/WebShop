@@ -26,4 +26,12 @@ public class Winkelwagen {
 		}
 		return bestelList;
 	}
+	
+	public int size(){
+		return bestelregels.size();
+	}
+	
+	public ArrayList<ProductHoeveelheid> getInhoud() {
+		return bestelregels;
+	}
 }
