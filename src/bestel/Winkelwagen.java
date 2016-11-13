@@ -17,4 +17,13 @@ public class Winkelwagen {
 		}
 		return totalPrice;
 	}
+	
+	public String toString() {
+		String bestelList = "";
+		for(ProductHoeveelheid p : bestelregels) {
+			bestelList += p.getNaam();
+			bestelList += ", ";
+		}
+		return bestelList;
+	}
 }

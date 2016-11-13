@@ -17,7 +17,13 @@ Product p = voorraadMap.get(item);
 <body>
 	<h1><%=p.getNaam()%></h1><br>
 	<img src="<%=p.getImageURL() %>"><br>
-	Prijs: <%=p.getPrijsPerEenheid() %>
+	Prijs: <%=p.getPrijsPerEenheid() %> <br>
+	<form action="" method="post">
+	<!-- request.setAttribute("product", p.getNaam()) -->
+	<input type="hidden" name="product" value="<%= p.getNaam() %>">
+	<input type="number" name="hoeveelheid">
+	<input type="submit" value="Bestel" >
+	</form>
 
 </body>
 </html>

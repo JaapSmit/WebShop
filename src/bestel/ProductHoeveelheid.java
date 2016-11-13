@@ -15,6 +15,10 @@ public class ProductHoeveelheid {
 		return p.getPrijs(hoeveelheid);
 	}
 	
+	public String getNaam() {
+		return p.getNaam();
+	}
+	
 	public void setHoeveelheid(int hoeveelheid) {
 		if(hoeveelheid >= 0) {
 			this.hoeveelheid = hoeveelheid;
