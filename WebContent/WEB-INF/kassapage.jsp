@@ -19,7 +19,6 @@
 			String error = (String)request.getAttribute("error");
 			if(error.isEmpty()) { %>
 				Succesvol afgerond, dank u wel.
-				
 			<% } else { %>
 			<%= error %> <br>
 				Straatnaam <input type="text" name="straatnaam"> Nummer <input type="number" name="nummer"> <br>

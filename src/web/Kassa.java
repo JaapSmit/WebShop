@@ -25,6 +25,19 @@ public class Kassa extends HttpServlet {
 			request.setAttribute("firsttime", "no");
 			request.setAttribute("error", session.getAttribute("error"));
 		}
+		
+		// Destroy session
+		if(((String)request.getAttribute("firsttime")).equals("no") && ((String)request.getAttribute("error")).isEmpty()){
+			session = request.getSession(false);
+			if(session != null) {
+				//session.invalidate();
+				session.setMaxInactiveInterval(1);
+				System.out.println("Destroy session");
+			}
+		}
+		
+		
+		
 		request.getRequestDispatcher("/WEB-INF/kassapage.jsp").forward(request, response);
 	}
 
