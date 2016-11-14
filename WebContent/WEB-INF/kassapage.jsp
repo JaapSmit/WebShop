@@ -20,7 +20,7 @@
 			if(error.isEmpty()) { %>
 				Succesvol afgerond, dank u wel.
 			<% } else { %>
-			<%= error %>
+			<%= error %> <br>
 				Straatnaam <input type="text" name="straatnaam"> Nummer <input type="number" name="nummer"> <br>
 				Postcode <input type="text" name="postcode"> <br>
 				<input type="submit" value="afronden">	

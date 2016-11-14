@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Kassa
@@ -15,15 +16,14 @@ public class Kassa extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getAttribute("error") == null) {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("error") == null) {
 			// eerste keer
 			request.setAttribute("firsttime", "yes");
-			System.out.println("Firsttime");
-			System.out.println(request.getAttribute("error"));
 		} else {
 			// tweede keer
 			request.setAttribute("firsttime", "no");
-			System.out.println("No firsttime");
+			request.setAttribute("error", session.getAttribute("error"));
 		}
 		request.getRequestDispatcher("/WEB-INF/kassapage.jsp").forward(request, response);
 	}
@@ -33,7 +33,6 @@ public class Kassa extends HttpServlet {
 		String nummer = (String)request.getParameter("nummer");
 		String postcode = (String)request.getParameter("postcode");
 		String error = "";
-		System.out.println(straatnaam + ", "  + nummer + ", " + postcode);
 		if(straatnaam.isEmpty()) {
 			error = "Vul een geldige straatnaam in";
 		} else if(nummer.isEmpty()) {
@@ -41,8 +40,8 @@ public class Kassa extends HttpServlet {
 		} else if(postcode.isEmpty()) {
 			error = "Vul een geldige postcode in";
 		}
-		System.out.println(error);
-		request.setAttribute("error", error);
+		HttpSession session = request.getSession();
+		session.setAttribute("error", error);
 		response.sendRedirect("Kassa");
 	}
 
