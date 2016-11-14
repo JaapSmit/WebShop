@@ -1,7 +1,4 @@
-<%@ page import= "java.util.*" %>
-<%@ page import= "model.*" %>
-<%@ page import= "bestel.*" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -14,7 +11,6 @@
 <title>TomosBeunShop</title>
 </head>
 <body id="mainbody">
-<% Winkelwagen winkelwagen = (Winkelwagen)request.getAttribute("winkelwagen"); %>
 <div id="mainblock">
 	<div id="title">
 		<h1>TomosBeunShop</h1>
@@ -22,40 +18,43 @@
 	</div>
 	<div id="containerMiddle">
 		<div id="leftBlock">
-			<% if(winkelwagen.size() > 0) { %>
+		
+			<c:if test="${winkelwagen.size > 0}">
 				<h3> Winkelwagen </h3>
 				<table>
 					<th> Product </th>
 					<th> Hoeveelheid </th>
 					<th> Prijs </th>
-				<% for(ProductHoeveelheid p : winkelwagen.getInhoud()) {%>
+				<c:forEach items="${winkelwagen.inhoud}" var="p">
+				
 						<tr>
-						<td><%= p.getNaam() %></td>
-						<td><%= p.getHoeveelheid() %> </td>
-						<td><%= p.getPrijs() %> </td>
+						<td>${p.naam}</td>
+						<td>${p.hoeveelheid}</td>
+						<td>${p.prijs} </td>
 						</tr>
-				<% }%>
+				</c:forEach>
+				
 				<tr>
 					<td>Totaal<td>
-					<td><%= winkelwagen.getTotaalPrijs() %></td>
+					<td>${winkelwagen.totaalPrijs}</td>
 				</tr>
 				</table>
-			<% } %>
-		<form action="Kassa"> 
-		<input type="submit" value="afronden">
-		</form>
+			
+				<form action="Kassa"> 
+				<input type="submit" value="afronden">
+				</form>
+			</c:if>
 		</div>
 		<div id="rightBlock">
 			<nav>
 				<h3>Producten:</h3>
 				<ul>
 					<!--  future links  --> 
-					<% ArrayList<Product> voorraad = (ArrayList)request.getAttribute("voorraad");
-					for(Product p : voorraad) {
-						%><li><a href="Product?id=<%=p.getNaam() %>"> <%= p.getNaam() %></a></li><%
-					}
+					<c:forEach items="${voorraad}" var="p">
+						<li><a href="Product?id=${p.naam}"> ${p.naam}</a></li>
+					</c:forEach>
+									
 					
-					%>
 				</ul>
 			</nav>
 		</div>

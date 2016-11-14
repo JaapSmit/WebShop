@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -11,6 +13,7 @@
 		<% 
 		String firsttime = (String)request.getAttribute("firsttime");
 		if(firsttime.equals("yes")) { %>
+		<c:if test="${firsttime eq 'yes'}"></c:if>
 			Straatnaam <input type="text" name="straatnaam"> Nummer <input type="number" name="nummer"> <br>
 			Postcode <input type="text" name="postcode"> <br>
 			<input type="submit" value="afronden">

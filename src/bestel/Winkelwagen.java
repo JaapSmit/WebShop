@@ -27,7 +27,7 @@ public class Winkelwagen {
 		return bestelList;
 	}
 	
-	public int size(){
+	public int getSize(){
 		return bestelregels.size();
 	}
 	
