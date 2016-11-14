@@ -7,6 +7,7 @@ public class Winkelwagen {
 	private ArrayList<ProductHoeveelheid> bestelregels = new ArrayList<>();
 	
 	public void bestel(Product p, int hoeveelheid) {
+		// hier kan ik een check functie toevoegen
 		bestelregels.add(new ProductHoeveelheid(p, hoeveelheid));
 	}
 	

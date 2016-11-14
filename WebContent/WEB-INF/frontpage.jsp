@@ -26,7 +26,6 @@
 					<th> Hoeveelheid </th>
 					<th> Prijs </th>
 				<c:forEach items="${winkelwagen.inhoud}" var="p">
-				
 						<tr>
 						<td>${p.naam}</td>
 						<td>${p.hoeveelheid}</td>

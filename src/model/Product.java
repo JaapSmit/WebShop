@@ -49,6 +49,6 @@ public abstract class Product {
 		return hoeveelheid * getPrijsPerEenheid();
 	}
 	
-	abstract void addToWinkelwagen(); //TODO: Implement
+	public abstract boolean isToevoegbaar(); //TODO: Implement
 		
 }

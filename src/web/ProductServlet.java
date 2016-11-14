@@ -40,13 +40,20 @@ public class ProductServlet extends HttpServlet {
 		String product = (String)request.getParameter("product");
 		int hoeveelheid = Integer.parseInt(request.getParameter("hoeveelheid"));
 		
-		if(hoeveelheid <= 0) {
-			response.sendRedirect("Product?id="+product+"Error");
+		if(voorraadMap.get(product).isToevoegbaar()) {
+			if(voorraadMap.get(product).isToevoegbaar() == false) {
+				hoeveelheid = 1;
+			}
+			if(hoeveelheid <= 0) {
+				response.sendRedirect("Product?id="+product+"Error");
+			} else {
+				//winkelwagen.bestel(voorraadMap.get(product), hoeveelheid);
+				((Winkelwagen)session.getAttribute("winkelwagen")).bestel(voorraadMap.get(product), hoeveelheid);
+				response.sendRedirect("index");
+			} 
 		} else {
-			//winkelwagen.bestel(voorraadMap.get(product), hoeveelheid);
-			((Winkelwagen)session.getAttribute("winkelwagen")).bestel(voorraadMap.get(product), hoeveelheid);
-			response.sendRedirect("index");
-		}	
+			response.sendRedirect("Product?id="+product+"Error");
+		}
 		
 	}
 

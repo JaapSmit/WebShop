@@ -7,6 +7,7 @@ public class DefaultProduct extends Product {
 	private int eenheid;
 	private int prijsPerEenheid;
 	private String imageUrl;
+	boolean toevoegbaar;
 	
 	public DefaultProduct(String naam, int prijsPerEenheid, String imageUrl, int eenheid) {
 		super(naam, prijsPerEenheid, imageUrl, eenheid);
@@ -14,6 +15,7 @@ public class DefaultProduct extends Product {
 		this.prijsPerEenheid = prijsPerEenheid;
 		this.imageUrl = imageUrl;
 		this.eenheid = eenheid;
+		this.toevoegbaar = true;
 	}
 	
 	public DefaultProduct(String naam, int prijsPerEenheid, String imageUrl) {
@@ -22,6 +24,7 @@ public class DefaultProduct extends Product {
 		this.prijsPerEenheid = prijsPerEenheid;
 		this.imageUrl = imageUrl;
 		this.eenheid = STUK;
+		this.toevoegbaar = true;
 	}
 	
 	@Override
@@ -37,7 +40,7 @@ public class DefaultProduct extends Product {
 	public String getImageURL() { return imageUrl;	}
 	
 	@Override
-	void addToWinkelwagen() {
-		// maybe a further implement
+	public boolean isToevoegbaar() {
+		return toevoegbaar;
 	}
 }

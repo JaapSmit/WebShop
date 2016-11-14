@@ -1,7 +1,6 @@
 package model;
 
 public class Beperkt extends DefaultProduct {
-	private boolean alInWinkelwagen = false;
 	
 	public Beperkt(String naam, int prijsPerEenheid, String imageUrl, int eenheid) {
 		super(naam, prijsPerEenheid, imageUrl, eenheid);
@@ -12,11 +11,16 @@ public class Beperkt extends DefaultProduct {
 	}
 	
 	@Override
-	void addToWinkelwagen() {
-		if(alInWinkelwagen == false) {
-			super.addToWinkelwagen();
-			alInWinkelwagen = true;
-			// Disable the add knop
-		}		
+	public boolean isToevoegbaar() {
+		if(super.isToevoegbaar()) {
+			setToevoegbaar(false);
+			return true;
+		}
+		return super.isToevoegbaar();
 	}
+	
+	private void setToevoegbaar(boolean toevoegbaar) {
+		super.toevoegbaar = toevoegbaar;
+	}
+
 }

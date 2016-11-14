@@ -18,7 +18,7 @@ public class KwantumKorting extends DefaultProduct {
 	private int discount(int prijs, int hoeveelheid) {
 		// every 1 item gives 5% discount until 30%
 		if(hoeveelheid < 6) {
-			double discount = (100-(hoeveelheid * 5))/100;
+			double discount = (double)(100-(hoeveelheid * 5))/100;
 			prijs *= discount;
 		} else {
 			prijs *= 0.70;
